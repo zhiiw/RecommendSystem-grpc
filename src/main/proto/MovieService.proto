@@ -1,0 +1,14 @@
+syntax = "proto3";
+package com.example.grpc;
+
+message MovieRequest{
+
+}
+
+message MovieResponse{
+
+}
+
+service MovieService{
+  rpc getMovieRecommend(MovieRequest) returns (stream MovieResponse);
+}
