@@ -4,7 +4,7 @@ import io.grpc.stub.StreamObserver;
 
 public class GreetingServiceImpl extends GreetingServiceGrpc.GreetingServiceImplBase {
     @Override
-    public void greeting(GreetingServiceOuterClass.HelloRequest request,
+    public void greeting(HelloRequest request,
                          StreamObserver<GreetingServiceOuterClass.HelloResponse> responseObserver) {
         // HelloRequest has toString auto-generated.
         System.out.println(request);

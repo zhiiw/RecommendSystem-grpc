@@ -1,4 +1,4 @@
-package com.example.grpc;
+package com.example.grpc.util;
 
 import redis.clients.jedis.Jedis;
 
@@ -16,13 +16,17 @@ public class ImporterToRedis {
         //setting comma as delimiter pattern
         int x=0;
         while (sc.hasNext()) {
-            if(x>=20){
+            if(x>=20000){
                 break;
             }
+            jedis.hmset();
+
             x++;
         }
         sc.close();
-        jedis.set("113","514");
         System.out.println(jedis.get("113"));
     }
+    //tagId -> tag
+    //用户看过的电影 加起来
+    //
 }

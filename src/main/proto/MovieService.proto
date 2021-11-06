@@ -1,14 +1,23 @@
 syntax = "proto3";
 package com.example.grpc;
+option java_multiple_files = true;
 
 message MovieRequest{
-
+  string session_id=1;
+  uint64 movie_id=2;
 }
 
 message MovieResponse{
-
+  repeated RateForMovie rate =1;
 }
-
+message RateForMovie{
+  uint64 user_id =1;
+  uint64 movie_id =2;
+  float score = 3;
+  uint64 timestamp = 4;
+}
+//
 service MovieService{
-  rpc getMovieRecommend(MovieRequest) returns (stream MovieResponse);
+  rpc GetMovieBasedRecommend(MovieRequest) returns (stream MovieResponse);
+
 }
