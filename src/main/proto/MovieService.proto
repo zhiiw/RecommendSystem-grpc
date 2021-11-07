@@ -1,14 +1,29 @@
 syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.example.grpc";
+option java_outer_classname = "MovieGrpc";
+option objc_class_prefix = "GRT";
 package com.example.grpc;
 
 message MovieRequest{
-
+  string session_id = 1;
+  uint64 movie_id = 2;
 }
 
-message MovieResponse{
+message MovieProfileResponse{
+  uint64 movie_id = 1;
+  uint64 average_score = 2;
+  repeated string genre = 3;
+  repeated uint64 watched_user_id = 4;
+  repeated Tag tag = 5;
+}
 
+message Tag{
+  uint64 tag_id = 1;
+  string tag_name = 2;
+  float relevance = 3;
 }
 
 service MovieService{
-  rpc getMovieRecommend(MovieRequest) returns (stream MovieResponse);
+  rpc GetMovieProfile(MovieRequest) returns (stream MovieProfileResponse);
 }
