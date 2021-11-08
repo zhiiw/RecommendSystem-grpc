@@ -1,4 +1,4 @@
-package com.example.grpc.util;
+package com.example.grpc;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -61,7 +61,5 @@ public class ImporterToRedis {
             System.out.println(jedis.hgetAll(movie_id));
         }
         sc.close();
-
     }
-
 }
