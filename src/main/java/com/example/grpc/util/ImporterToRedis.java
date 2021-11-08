@@ -1,4 +1,4 @@
-package com.example.grpc;
+package com.example.grpc.util;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -51,6 +51,7 @@ public class ImporterToRedis {
         sc.nextLine();
 
         while (sc.hasNext()) {
+<<<<<<< HEAD:src/main/java/com/example/grpc/ImporterToRedis.java
             String str = sc.nextLine();
             String s[] = str.split(",");
             String movie_id = "movie_"+s[0];
@@ -61,5 +62,19 @@ public class ImporterToRedis {
             System.out.println(jedis.hgetAll(movie_id));
         }
         sc.close();
+=======
+            if(x>=20000){
+                break;
+            }
+            jedis.hmset();
+
+            x++;
+        }
+        sc.close();
+        System.out.println(jedis.get("113"));
+>>>>>>> master:src/main/java/com/example/grpc/util/ImporterToRedis.java
     }
+    //tagId -> tag
+    //用户看过的电影 加起来
+    //
 }

@@ -18,12 +18,20 @@
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-protobuf</artifactId>
+<<<<<<< HEAD
             <version>1.2.0</version>
+=======
+            <version>1.41.0</version>
+>>>>>>> master
         </dependency>
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-stub</artifactId>
+<<<<<<< HEAD
             <version>1.2.0</version>
+=======
+            <version>1.41.0</version>
+>>>>>>> master
         </dependency>
         <dependency>
             <groupId>io.grpc</groupId>
