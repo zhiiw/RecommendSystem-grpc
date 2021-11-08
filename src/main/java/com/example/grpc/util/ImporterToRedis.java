@@ -1,3 +1,4 @@
+
 package com.example.grpc;
 
 import redis.clients.jedis.Jedis;
@@ -62,4 +63,5 @@ public class ImporterToRedis {
         }
         sc.close();
     }
+
 }

@@ -7,7 +7,6 @@ package com.example.grpc;
 option java_multiple_files = true;
 
 message UserRequest{
-<<<<<<< HEAD
   string session_id = 1;
   uint64 user_id = 2;
 }
@@ -54,31 +53,6 @@ service UserService{
   rpc GetUserRating(UserRequest) returns (stream UserRatingResponse);
   rpc GetSingleUserRating(UserSingleRequest) returns (UserSingleResponse);
   rpc GetUserProfile(UserRequest) returns (stream UserProfileResponse);
-=======
-  string session_id=1;
-  uint64 user_id=2;
-}
-
-message UserResponse{
-  repeated RateForUser rate = 1;
-}
-
-message RateForUser{
-    uint64 user_id =1;
-    uint64 movie_id =2;
-    float score = 3;
-    uint64 timestamp = 4;
-}
-
-message UserSingleRequest{
-  string session_id=1;
-  uint64 user_id=2;
-  uint64 movie_id=3;
-}
-
-message UserSingleResponse{
-  RateForUser rate = 1;
-}
 
 message UserProfileResponse{
   float avgScore =1 ;
@@ -95,5 +69,5 @@ service UserService{
   rpc GetUserBasedRecommend(UserRequest) returns (stream UserResponse);
   rpc GetUserMovieRating(UserSingleRequest) returns (stream UserSingleResponse);
   rpc GetUserProfile(UserRequest) returns (stream )
->>>>>>> master
+
 }
