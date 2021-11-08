@@ -1,26 +1,20 @@
-syntax = "proto3";
+syntax= "proto3";
+option java_multiple_files = true;
+option java_package = "com.example.grpc";
+option java_outer_classname = "GreetingGrpc";
+option objc_class_prefix = "GRT";
 package com.example.grpc;
 option java_multiple_files = true;
 
-// Request payload
-message HelloRequest {
-  // Each message attribute is strongly typed.
-  // You also must assign a "tag" number.
-  // Each tag number is unique within the message.
-  string name = 1;
-
-  // This defines a strongly typed list of String
-  repeated string hobbies = 2;
-
-  // There are many more basics types, like Enum, Map
-  // See https://developers.google.com/protocol-buffers/docs/proto3
-  // for more information.
-}
-
-message HelloResponse {
-  string greeting = 1;
-}
-
-service GreetingService {
+service GreetingService{
   rpc greeting(HelloRequest) returns (stream HelloResponse);
+}
+
+message HelloRequest{
+  string session_id = 1;
+  uint64 user_id = 2;
+}
+
+message HelloResponse{
+  string message = 1;
 }

@@ -1,32 +1,58 @@
 syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.example.grpc";
+option java_outer_classname = "UserGrpc";
+option objc_class_prefix = "GRT";
 package com.example.grpc;
 option java_multiple_files = true;
 
 message UserRequest{
-  string session_id=1;
-  uint64 user_id=2;
+  string session_id = 1;
+  uint64 user_id = 2;
 }
 
-message UserResponse{
-  repeated RateForUser rate = 1;
-}
-
-message RateForUser{
-    uint64 user_id =1;
-    uint64 movie_id =2;
-    float score = 3;
-    uint64 timestamp = 4;
+message UserRatingResponse{
+  repeated Rate rate = 1;
 }
 
 message UserSingleRequest{
-  string session_id=1;
-  uint64 user_id=2;
-  uint64 movie_id=3;
+  string session_id = 1;
+  uint64 user_id = 2;
+  uint64 movie_id = 3;
 }
 
 message UserSingleResponse{
-  RateForUser rate = 1;
+  Rate rate = 1;
 }
+
+message UserProfileResponse{
+  uint64 user_id = 1;
+  Profile profile = 2;
+}
+
+message Profile{
+  float avg_score = 1;
+  uint64 favor_genre = 2;
+  repeated Genre genre = 3;
+  repeated Rate rate = 4;
+}
+
+message Genre{
+  string genre_name = 1;
+  uint64 count = 2;
+}
+
+message Rate{
+  uint64 user_id = 1;
+  uint64 movie_id = 2;
+  float score = 3;
+  uint64 timestamp = 4;
+}
+
+service UserService{
+  rpc GetUserRating(UserRequest) returns (stream UserRatingResponse);
+  rpc GetSingleUserRating(UserSingleRequest) returns (UserSingleResponse);
+  rpc GetUserProfile(UserRequest) returns (stream UserProfileResponse);
 
 message UserProfileResponse{
   float avgScore =1 ;
@@ -43,4 +69,5 @@ service UserService{
   rpc GetUserBasedRecommend(UserRequest) returns (stream UserResponse);
   rpc GetUserMovieRating(UserSingleRequest) returns (stream UserSingleResponse);
   rpc GetUserProfile(UserRequest) returns (stream )
+
 }
