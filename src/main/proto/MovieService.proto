@@ -28,4 +28,4 @@ message RelMostTag{
 
 service MovieService{
   rpc GetMovieProfile(MovieRequest) returns (stream MovieProfileResponse);
-}
+} 
