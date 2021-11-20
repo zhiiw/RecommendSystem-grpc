@@ -10,46 +10,40 @@ message UserRequest{
   uint64 user_id = 2;
 }
 
-message UserRatingResponse{
+message UserHistoryResponse{
   repeated Rate rate = 1;
 }
 
-message UserSingleRequest{
-  string session_id = 1;
-  uint64 user_id = 2;
-  uint64 movie_id = 3;
-}
-
-message UserSingleResponse{
-  Rate rate = 1;
-}
-
-message UserProfileResponse{
-  uint64 user_id = 1;
-  Profile profile = 2;
-}
-
-message Profile{
-  float avg_score = 1;
-  uint64 favor_genre = 2;
-  repeated Genre genre = 3;
-  repeated Rate rate = 4;
-}
-
-message Genre{
-  string genre_name = 1;
-  uint64 count = 2;
-}
-
+//message UserProfileResponse{
+//  Profile profile = 1;
+//}
+//
+//message Profile{
+//  float avg_score = 1;
+//  float var_score = 2;
+//  uint64 total_watched = 3;
+//  string favor_genre = 4;
+//  repeated Genre genre = 5;
+//  repeated Rate rate = 6;
+//}
+//
+//message Genre{
+//  string genre_name = 1;
+//  uint64 count = 2;
+//}
+//
 message Rate{
-  uint64 user_id = 1;
-  uint64 movie_id = 2;
-  float score = 3;
-  uint64 timestamp = 4;
+  uint64 movie_id = 1;
+  float score = 2;
+  uint64 timestamp = 3;
+}
+
+message UserListResponse{
+
 }
 
 service UserService{
-  rpc GetUserRating(UserRequest) returns (stream UserRatingResponse);
-  rpc GetSingleUserRating(UserSingleRequest) returns (UserSingleResponse);
-  rpc GetUserProfile(UserRequest) returns (stream UserProfileResponse);
+  rpc GetUserHistory(UserRequest) returns (stream UserHistoryResponse);
+  rpc GetAllUser(UserRequest) returns (stream UserListResponse);
+//  rpc GetUserProfile(UserRequest) returns (stream UserProfileResponse);
 }

@@ -12,13 +12,15 @@ message MovieRequest{
 
 message MovieProfileResponse{
   uint64 movie_id = 1;
-  uint64 average_score = 2;
-  repeated string genre = 3;
-  repeated uint64 watched_user_id = 4;
-  repeated Tag tag = 5;
+  string title = 2;
+  uint64 timestamp = 3;
+  repeated string genre = 4;
+  repeated RelMostTag tag = 5;
+  uint64 average_score = 6;
+  uint64 watched_user = 7;
 }
 
-message Tag{
+message RelMostTag{
   uint64 tag_id = 1;
   string tag_name = 2;
   float relevance = 3;

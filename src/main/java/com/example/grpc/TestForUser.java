@@ -5,7 +5,7 @@ import io.grpc.*;
 // New import
 import io.grpc.stub.*;
 
-public class Client
+public class TestForUser
 {
     public static void main( String[] args ) throws Exception
     {
